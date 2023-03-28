@@ -262,14 +262,14 @@ void ConvertRGBToBayer(Image &_image)
   unsigned int width = _image.Width();
   unsigned int height = _image.Height();
 
-  std::unique_ptr<unsigned char[]> destImageData = 
+  std::unique_ptr<unsigned char[]> destImageData =
                         std::make_unique<unsigned char[]>(width*height);
 
   if (_image.Format() == PF_BAYER_RGGB8)
   {
-    for (unsigned int i=0; i<width; i++)
+    for (unsigned int i=0; i < width; i++)
     {
-      for (unsigned int j=0; j<height; j++)
+      for (unsigned int j=0; j < height; j++)
       {
         if (j%2)
         {
@@ -296,7 +296,9 @@ void ConvertRGBToBayer(Image &_image)
       }
     }
 
-    memcpy(sourceImageData, destImageData.get(), sizeof(unsigned char)*width*height);
+    memcpy(sourceImageData,
+            destImageData.get(),
+            sizeof(unsigned char)*width*height);
   }
 }
 
